@@ -28,7 +28,7 @@
 
 ## FLAW 1: SQL Injection Vulnerability
 ### Source Link:
-[app.js#L58](https://github.com/CodingTarik/VulnApp/blob/main/app.js#L58)
+[app.js#L58](https://github.com/CodingTarik/VulnApp/blob/main/vulnNodeApp/app.js#L58)
 
 ### Description:
 The login route is vulnerable to SQL injection. The user input is directly concatenated into the SQL query, allowing an attacker to manipulate the query by injecting SQL code.
@@ -51,7 +51,7 @@ db.get("SELECT * FROM users WHERE username = ? AND password = ?", [username, pas
 
 ## FLAW 2: Cross-Site Scripting (XSS) Vulnerability
 ### Source Link:
-[notes.ejs#L88](https://github.com/CodingTarik/VulnApp/blob/main/views/notes.ejs#L88)
+[notes.ejs#L88](https://github.com/CodingTarik/VulnApp/blob/main/vulnNodeApp/app.js#L88)
 
 ### Description:
 The application renders user-generated content without proper sanitization, allowing an attacker to inject malicious scripts that will be executed in the context of the user's browser.
@@ -67,7 +67,7 @@ Escape user-generated content before rendering it in the HTML to prevent the exe
 
 ## FLAW 3: Arbitrary File Write Vulnerability
 ### Source Link:
-[app.js#L138](https://github.com/CodingTarik/VulnApp/blob/main/app.js#L138)
+[app.js#L138](https://github.com/CodingTarik/VulnApp/blob/main/vulnNodeApp/app.js#L138)
 
 ### Description:
 The application allows users to specify the name of the file to be written, which can lead to arbitrary file write vulnerabilities if not properly sanitized.
@@ -83,7 +83,7 @@ const filePath = path.join(__dirname, 'uploads', path.basename(name) + '.txt');
 
 ## FLAW 4: Improper Output Neutralization for Logs
 ### Source Link:
-[app.js#L67](https://github.com/CodingTarik/VulnApp/blob/main/app.js#L67)
+[app.js#L67](https://github.com/CodingTarik/VulnApp/blob/main/vulnNodeApp/app.js#L67)
 
 ### Description:
 The application logs user input directly into an HTML file without proper sanitization, which can lead to XSS attacks if the logs are viewed in a browser.
@@ -99,7 +99,7 @@ const log = `<div>Invalid login attempt for user: ${sanitize(username)}</div>`;
 
 ## FLAW 5: Sensitive Data Exposure
 ### Source Link:
-[app.js#L157](https://github.com/CodingTarik/VulnApp/blob/main/app.js#L157)
+[app.js#L157](https://github.com/CodingTarik/VulnApp/blob/main/vulnNodeApp/app.js#L157)
 
 ### Description:
 The application exposes sensitive user data through an endpoint that can be accessed by any authenticated user, including non-admin users.
